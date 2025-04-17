@@ -1,9 +1,14 @@
-var express = require('express');
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+const users = [
+  { name: "User1", age: 25, email: "user1@example.com" },
+  { name: "User2", age: 35, email: "user2@example.com" },
+  { name: "User3", age: 45, email: "user3@example.com" },
+];
+
+router.get("/", (req, res) => {
+  res.render("index", { title: "User List", users });
 });
 
 module.exports = router;
