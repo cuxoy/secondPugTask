@@ -1,17 +1,29 @@
-extends layout
-
-block content
-  .container.mt-5
-    h1 User List
-    table.table.table-striped
+doctype html
+html
+  head
+    title Product List
+    style.
+      .in-stock {
+        color: green;
+      }
+      .out-of-stock {
+        color: red;
+      }
+  body
+    h1 Product List
+    table(border="1")
       thead
         tr
           th Name
-          th Age
-          th Email
+          th Price
+          th Status
       tbody
-        each user in users
+        each product in products
           tr
-            td= user.name
-            td= user.age
-            td= user.email
+            td #{product.name}
+            td $#{product.price.toFixed(2)}
+            td(class=product.inStock ? "in-stock" : "out-of-stock")
+              if product.inStock
+                | In Stock
+              else
+                | Out of Stock
